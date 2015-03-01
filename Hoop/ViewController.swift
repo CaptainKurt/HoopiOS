@@ -35,11 +35,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locValue = manager.location.coordinate
         latitude = locValue.latitude
         longitude = locValue.longitude
-        println(latitude)
-        println(longitude)
+//        println(latitude)
+//        println(longitude)
         manager.stopUpdatingLocation()
         stringurl = "https://api.instagram.com/v1/locations/search?lat=\(latitude!)&lng=\(longitude!)&distance=5000&client_id=fc4a0003032345b79949e8931810577c"
-        println(stringurl)
+//        println(stringurl)
         getInstagramData(stringurl!)
         
     }
@@ -124,7 +124,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 
                 for object in picdata{
                     
-                    println("candy")
+//                    println("candy")
                     if var images = object["images"] as? NSDictionary
                     {
                         if var stdres = images["standard_resolution"] as? NSDictionary
@@ -139,13 +139,36 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
         }
-        println(pictureurls)
+//        println(pictureurls)
+        println("Done Loading Images")
+        
+//        for urlString in pictureurls {
+//            
+//        }
+    }
+    
+    
+    
+    @IBAction func seePics(sender: AnyObject)
+    {
+//        navigationController.
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "seePics" {
+            
+            
+            var mainFeedVC: MainFeedViewController = segue.destinationViewController as MainFeedViewController
+            mainFeedVC.imgDataArray = pictureurls
+        }
+    }
+    
     
     
 }
