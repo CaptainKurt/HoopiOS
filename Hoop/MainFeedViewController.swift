@@ -5,7 +5,6 @@
 //  Created by Kurt Walker on 2/28/15.
 //  Copyright (c) 2015 Hoop. All rights reserved.
 //
-
 import UIKit
 
 class MainFeedViewController: PFQueryTableViewController
@@ -16,72 +15,41 @@ class MainFeedViewController: PFQueryTableViewController
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-<<<<<<< HEAD
-        for imgURLString in imgDataArray {
-            let string: String = imgURLString as String
-            let data = NSData(contentsOfURL: NSURL(string: string)!)
-            var file = PFFile(data: data)
-            
-            
-            file.saveInBackgroundWithBlock({ (succeeded, error) -> Void in
-                if error != nil {
-                    var photoObject = PFObject(className: "Photo")
-                    photoObject.addObject(string, forKey: "urlString")
-                    photoObject.addObject(file, forKey: "imageFile")
-                    
-                    photoObject.saveInBackgroundWithBlock({ (succeeded, error) -> Void in
-                        if error != nil {
-                            println("PHOTO SAVED!")
-                        }
-                        else {
-                            println(error)
-                        }
-                    })
-                }
-                else {
-                    println(error)
-                }
-            })
-            
-            
-        }
-=======
         self.parseClassName = "Photo"
         self.pullToRefreshEnabled = true
         self.paginationEnabled = true
         self.objectsPerPage = 10
->>>>>>> master1
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        var files = NSMutableArray()
-//        for imgString in imgDataArray {
-//            let string = imgString as String
-//            let data = NSData(contentsOfURL: NSURL(string: string)!)
-//            let file: PFFile = PFFile(data: data)
-//            
-//            files.addObject(file)
-//            
-//        }
-//        
-//        var photos = NSMutableArray()
-//        PFObject.saveAllInBackground(files, block: { (succeeded, error) -> Void in
-//            if succeeded {
-//                for file in files {
-//                    var file = file as PFFile
-//                    var photo = PFObject(className: "Photo")
-//                    photo.setObject(file, forKey: "imageFile")
-//                    photos.addObject(photo)
-//                }
-//                PFObject.saveAllInBackground(photos, block: { (succeeded, error) -> Void in
-//                    if succeeded {
-//                        println("success!")
-//                    }
-//                })
-//            }
-//        })
+        //        var files = NSMutableArray()
+        //        for imgString in imgDataArray {
+        //            let string = imgString as String
+        //            let data = NSData(contentsOfURL: NSURL(string: string)!)
+        //            let file: PFFile = PFFile(data: data)
+        //
+        //            files.addObject(file)
+        //
+        //        }
+        //
+        //        var photos = NSMutableArray()
+        //        PFObject.saveAllInBackground(files, block: { (succeeded, error) -> Void in
+        //            if succeeded {
+        //                for file in files {
+        //                    var file = file as PFFile
+        //                    var photo = PFObject(className: "Photo")
+        //                    photo.setObject(file, forKey: "imageFile")
+        //                    photos.addObject(photo)
+        //                }
+        //                PFObject.saveAllInBackground(photos, block: { (succeeded, error) -> Void in
+        //                    if succeeded {
+        //                        println("success!")
+        //                    }
+        //                })
+        //            }
+        //        })
         
         
         
@@ -113,30 +81,26 @@ class MainFeedViewController: PFQueryTableViewController
         var photo: PFObject = object as PFObject
         var file: PFFile? = photo.objectForKey("imageFile") as? PFFile
         
-//        if file != nil {
-//            cell?.img.file = file
-//            cell?.img.loadInBackground({ (succeeded, error) -> Void in
-//                if error == nil {
-//                    println("image loaded")
-//                }
-//                else {
-//                    println(error)
-//                }
-//            })
-//        }
-//        else {
-//            cell?.img.image = UIImage(named: "1@2x.jpg")
-//        }
+        if file != nil {
+            cell?.img.file = file
+            cell?.img.loadInBackground({ (succeeded, error) -> Void in
+                if error == nil {
+                    println("image loaded")
+                }
+                else {
+                    println(error)
+                }
+            })
+        }
+        else {
+            cell?.img.image = UIImage(named: "1@2x.jpg")
+        }
         
-<<<<<<< HEAD
-        cell?.img.image = UIImage(data: NSData(contentsOfURL: URL!)!)
-=======
-//                cell?.img.image = UIImage(data: NSData(contentsOfURL: URL!)!)
->>>>>>> master1
+        //                cell?.img.image = UIImage(data: NSData(contentsOfURL: URL!)!)
         
         
         return cell!
-    
+        
     }
     
     override func objectsDidLoad(error: NSError!) {
@@ -150,5 +114,5 @@ class MainFeedViewController: PFQueryTableViewController
             }
         }
     }
-   
+    
 }
