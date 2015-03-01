@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Parse.setApplicationId("0ijou6MhtlyEo4B238PZF5B0o0Vu7O9UXuXfvsUg", clientKey: "bomEgMD9lioBtBCvneCSJLFcHFA7GzHQaF3ZTgyG")
 
+        Photo.registerSubclass()
         
         return true
     }

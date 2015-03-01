@@ -124,7 +124,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 
                 for object in picdata{
                     
-                    println("candy")
                     if var images = object["images"] as? NSDictionary
                     {
                         if var stdres = images["standard_resolution"] as? NSDictionary
