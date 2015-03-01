@@ -1,19 +1,15 @@
 //
-//  HeaderCell.swift
+//  LoadMoreCell.swift
 //  Hoop
 //
-//  Created by Kurt Walker on 2/28/15.
+//  Created by Brian Kincade on 3/1/15.
 //  Copyright (c) 2015 Hoop. All rights reserved.
 //
 
 import UIKit
 
-class HeaderCell: UITableViewCell {
+class LoadMoreCell: PFTableViewCell {
 
-    
-    @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var scoreLabel: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,5 +20,5 @@ class HeaderCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

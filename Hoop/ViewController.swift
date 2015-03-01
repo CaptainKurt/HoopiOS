@@ -24,10 +24,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
 //        manager = CLLocationManager()
 //        manager.delegate = self
-//        manager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+//        manager.desiredAccuracy = kCLLocationAccuracyBest
 //        manager.requestAlwaysAuthorization()
 //        manager.startUpdatingLocation()
         
@@ -155,7 +156,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     }
                     
                     photos.addObject(photo)
-                    println(photo)
+//                    println(photo)
                     
                 }
             }

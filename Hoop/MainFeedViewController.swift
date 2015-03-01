@@ -7,23 +7,46 @@
 //
 import UIKit
 
-class MainFeedViewController: PFQueryTableViewController, CLLocationManagerDelegate
+class MainFeedViewController: PFQueryTableViewController, CLLocationManagerDelegate, ImageCellDelegate
 {
     
     var photos : NSMutableArray = NSMutableArray()
+    
+    
+    var manager : CLLocationManager!
+    var latitude : Double?
+    var longitude : Double?
+    var stringurl : String?
+    var ids : NSMutableArray = NSMutableArray()
+    var pictureurls : NSMutableArray = NSMutableArray()
+    var instaPhotos : NSMutableArray = NSMutableArray()
+    var photoLocations : NSMutableArray = NSMutableArray()
+    var photoDates : NSMutableArray = NSMutableArray()
+    
+    var shouldApplyFilter: Bool = false
+    
+    @IBOutlet weak var sortButton: UIBarButtonItem!
+    
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         self.parseClassName = "Photo"
         self.pullToRefreshEnabled = true
-        self.paginationEnabled = true
+        self.paginationEnabled = false
         self.objectsPerPage = 10
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUpNavBar()
+        
+        manager = CLLocationManager()
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestAlwaysAuthorization()
+        manager.startUpdatingLocation()
     }
     
     override func queryForTable() -> PFQuery! {
@@ -35,55 +58,123 @@ class MainFeedViewController: PFQueryTableViewController, CLLocationManagerDeleg
             query.cachePolicy = kPFCachePolicyCacheThenNetwork
         }
         
+        if shouldApplyFilter == false {
+            query.addDescendingOrder("date")
+        } else {
+            query.addDescendingOrder("score")
+        }
+        
+        query.includeKey("disrespectArray")
+        query.includeKey("respectArray")
         
         return query
     }
     
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        var sections: Int = self.objects.count
+        if self.paginationEnabled && sections != 0 {
+            sections++
+        }
+        return sections
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
     override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 400
+        return UIScreen.mainScreen().bounds.height + 41
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if (section == self.objects.count) {
+            return 0
+        }
+        
+        return 40
     }
     
     
+//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        if indexPath.section >= self.objects.count {
+//            return 44
+//        }
+//        
+//        return UIScreen.mainScreen().bounds.height + 41
+//    }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == self.objects.count {
+            return nil
+        }
+        
+        var header: HeaderCell = tableView.dequeueReusableCellWithIdentifier("HeaderCell") as HeaderCell
+        
+        var photo: Photo = self.objects[section] as Photo
+        header.scoreLabel.text = "\(photo.score)"
+        header.locationLabel.text = "\(photo.location)"
+        
+        return header
+    }
+    
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!, object: PFObject!) -> PFTableViewCell! {
-        
-        var cell = tableView.dequeueReusableCellWithIdentifier("ImageCell", forIndexPath: indexPath) as? ImageCell
-        
-        var photo: PFObject = object as PFObject
-        var file: PFFile? = photo.objectForKey("imageFile") as? PFFile
-        
-        if file != nil {
-            cell?.img.file = file
-            cell?.img.loadInBackground({ (succeeded, error) -> Void in
-                if error == nil {
-                    println("image loaded")
-                }
-                else {
-                    println(error)
-                }
-            })
+    
+        if indexPath.section == self.objects.count {
+            var cell = self.tableView(tableView, cellForNextPageAtIndexPath: indexPath)
+            return cell
+        } else {
+            
+            var cell = tableView.dequeueReusableCellWithIdentifier("ImageCell") as? ImageCell
+            
+            var photo: Photo = object as Photo
+            cell?.photo = photo
+            var file: PFFile? = photo.imageFile
+            
+            if file != nil {
+                cell?.img.file = file
+                cell?.img.loadInBackground({ (succeeded, error) -> Void in
+                    if error == nil {
+                        println("image loaded")
+                    }
+                    else {
+                        println(error)
+                    }
+                })
+            }
+            else {
+                cell?.img.image = UIImage(named: "1@2x.jpg")
+            }
+            
+            cell?.section = indexPath.section
+            
+            cell?.setButton()
+            cell?.delegate = self
+            
+            
+            return cell!
         }
-        else {
-            cell?.img.image = UIImage(named: "1@2x.jpg")
+        
+    }
+    
+    
+    
+    
+    override func tableView(tableView: UITableView!, cellForNextPageAtIndexPath indexPath: NSIndexPath!) -> PFTableViewCell! {
+        var cell = tableView.dequeueReusableCellWithIdentifier("LoadMoreCell") as LoadMoreCell
+        
+        return cell
+    }
+    
+    override func objectAtIndexPath(indexPath: NSIndexPath!) -> PFObject! {
+        if indexPath.section < self.objects.count {
+            return self.objects[indexPath.section] as PFObject
         }
-        
-        //                cell?.img.image = UIImage(data: NSData(contentsOfURL: URL!)!)
-        
-        
-        return cell!
-        
+        return nil
     }
     
     override func objectsDidLoad(error: NSError!) {
         super.objectsDidLoad(error)
-        
-        PFObject.saveAllInBackground(photos, block: { (succeeded, error) -> Void in
-            if succeeded {
-                println("Success!")
-            }
-            else {
-                println(error)
-            }
-        })
+
     }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -95,6 +186,229 @@ class MainFeedViewController: PFQueryTableViewController, CLLocationManagerDeleg
     }
     
     
+    func setUpNavBar()
+    {
+//        self.navigationController?.navigationBar.barTintColor = UIColor(red: 241, green: 85, blue: 86, alpha: 1.0)
+//        
+//        self.navigationController?.navigationBar.tintColor = UIColor(red: 241, green: 85, blue: 86, alpha: 1.0)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "RedBackground"), forBarMetrics: UIBarMetrics.Default)
+        
+        let imageView = UIImageView(frame: CGRectMake(0, 0, 70, 32))
+        let image = UIImage(named: "lilhoop")
+        imageView.image = image
+        navigationItem.titleView = imageView
+    }
+    
+    func updateScoreLabel(section: Int, newScore: Int) {
+        
+//        var header = self.tableView?.headerViewForSection(section)! as HeaderCell
+//        header.scoreLabel.text = "\(newScore)"
+    }
+    
+    
+    @IBAction func sortButtonPressed(sender: AnyObject)
+    {
+        if sortButton.title == "TRENDING" {
+            self.sortButton.title = "SURF"
+            shouldApplyFilter = true
+            self.loadObjects()
+        }
+        else {
+            self.sortButton.title = "TRENDING"
+            shouldApplyFilter = false
+            self.loadObjects()
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // MARK: - Get Instagram Photos
+    
+    
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        
+        var locValue : CLLocationCoordinate2D
+        locValue = manager.location.coordinate
+        latitude = locValue.latitude
+        longitude = locValue.longitude
+        manager.stopUpdatingLocation()
+        stringurl = "https://api.instagram.com/v1/locations/search?lat=\(latitude!)&lng=\(longitude!)&distance=5000&client_id=fc4a0003032345b79949e8931810577c"
+        getInstagramData(stringurl!)
+        
+    }
+    
+    func getInstagramData(purl : String){
+        
+        var url = NSURL(string: purl)
+        let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
+            
+            self.parseLocationData(data)
+        }
+        
+        task.resume()
+        
+    }
+    
+    
+    func parseLocationData(jsonData : NSData){
+        var parseError: NSError?
+        let parsedObject: AnyObject? = NSJSONSerialization.JSONObjectWithData(jsonData,
+            options: NSJSONReadingOptions.AllowFragments,
+            error:&parseError)
+        
+        if let insta = parsedObject as? NSDictionary
+        {
+            if let data = insta["data"] as? NSArray
+            {
+                for object in data
+                {
+                    if var uid = object["id"] as? NSString
+                    {
+                        ids.addObject(uid)
+                    }
+                }
+            }
+        }
+        getPictures(ids)
+    }
+    
+    func getPictures(idNumbers : NSMutableArray){
+        
+        var pictureString = "https://api.instagram.com/v1/locations/"
+        var remainder = "/media/recent?client_id=fc4a0003032345b79949e8931810577c"
+        var picURLString = ""
+        
+        for object in idNumbers
+        {
+            var obj: String = object as String
+            
+            picURLString = pictureString + obj  + remainder
+            
+            var picurl = NSURL(string: picURLString)
+            let pictask = NSURLSession.sharedSession().dataTaskWithURL(picurl!) {(data, response, error) in
+                self.parseIDData(data)
+                // println(picurl)
+            }
+            pictask.resume()
+        }
+    }
+    
+    func parseIDData(jsonData: NSData){
+        
+        var queries: NSMutableArray = NSMutableArray()
+        var parseError: NSError?
+        let parsedObject: AnyObject? = NSJSONSerialization.JSONObjectWithData(jsonData,
+            options: NSJSONReadingOptions.AllowFragments,
+            error:&parseError)
+        var queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+        dispatch_async(queue, { () -> Void in
+            if let instapics = parsedObject as? NSDictionary
+            {
+                if let picdata = instapics["data"] as? NSArray
+                {
+                    
+                    for object in picdata{
+                        var photo : Photo = Photo()
+                        
+                        if var unixDate: String = object["created_time"] as? String{
+                            //photoDates.addObject(date)
+                            
+                            var date: Int = unixDate.toInt()!
+                            
+                            var time = Double(date)
+                            
+                            var newDate = NSDate(timeIntervalSince1970: time)
+                            //var time : NSTimeInterval = NSTimeInterval(
+                            
+                            //var date = unixDate as Int
+                            photo.date = newDate
+                            // println(dateInt)
+                            //println(date)
+                            
+                        }
+                        
+                        if var location = object["location"] as? NSDictionary
+                        {
+                            if var name = location["name"] as?NSString{
+                                //photoLocations.addObject(name)
+                                photo.location = name
+                            }
+                        }
+                        
+                        if var imageID = object["id"] as? String {
+                            photo.imageID = imageID
+                        }
+                        
+                        if var images = object["images"] as? NSDictionary
+                        {
+                            if var stdres = images["standard_resolution"] as? NSDictionary
+                            {
+                                if var imurl = stdres["url"] as? NSString{
+                                    // println(imurl)
+                                    //pictureurls.addObject(imurl)
+                                    photo.convertURL(imurl)
+                                }
+                            }
+                        }
+                        
+                        
+                        var query: PFQuery = PFQuery(className: "Photo")
+                        query.whereKey("imageID", equalTo: photo.imageID)
+                        query.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+                            if objects.count > 0 {
+                                
+                            }
+                            else {
+                                self.instaPhotos.addObject(photo)
+                            }
+                        })
+                        
+                        //                    println(photo)
+                        
+                    }
+                }
+                
+            }
+            
+            PFObject.saveAllInBackground(self.instaPhotos, block: { (succeeded, error) -> Void in
+                if succeeded {
+                    println("SUCCESS!")
+                }
+                else {
+                    println(error)
+                }
+            })
+        })
+        println("Done Loading Images")
+        
+        
+        
+//        
+//        var queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+//        dispatch_async(queue, { () -> Void in
+//
+//            // Use dispatch_apply instead significantly improves performance time when the number of users is large.
+//            dispatch_apply(UInt(self.instaPhotos.count), queue, { (i) -> Void in
+//                
+//                var instaPhoto: Photo = self.instaPhotos.objectAtIndex(Int(i)) as Photo
+//                
+//                var query: PFQuery = PFQuery(className: "Photo")
+//                query.where
+//                
+//            })
+//        })
+    
+
+        
+        
+    }
     
     
 }

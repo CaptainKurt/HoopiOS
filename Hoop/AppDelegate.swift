@@ -13,7 +13,7 @@ import CoreLocation
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
     
-    let locationManager = CLLocationManager()
+//    let locationManager = CLLocationManager()
     
 //    var manager : CLLocationManager!
 //    var latitude : Double?
@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 //    var stringurl : String?
 //    var ids : NSMutableArray = NSMutableArray()
 //    var pictureurls : NSMutableArray = NSMutableArray()
-//    var photos : NSMutableArray = NSMutableArray()
+//    var instaPhotos : NSMutableArray = NSMutableArray()
 //    var photoLocations : NSMutableArray = NSMutableArray()
 //    var photoDates : NSMutableArray = NSMutableArray()
 
@@ -32,20 +32,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
 //        Parse.enableLocalDatastore()
         
+//        UINavigationBar.appearance().barTintColor = UIColor(red: 241, green: 85, blue: 86, alpha: 1.0)
+        
         Parse.setApplicationId("d5NQERKjVbCXIdTMYtgsNlPy8P6crh5XbRfxmbbL", clientKey: "th4RsOudetzjdYMI8OU9vNAxTYkVB3A1goiB9Mja")
 
         Photo.registerSubclass()
         
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.startUpdatingLocation()
         
-//        manager = CLLocationManager()
-//        manager.delegate = self
-//        manager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-//        manager.requestAlwaysAuthorization()
-//        manager.startUpdatingLocation()
+        PFAnonymousUtils.logInWithBlock { (user, error) -> Void in
+            if error == nil {
+                var udid = UIDevice.currentDevice().identifierForVendor
+                user.setObject(udid, forKey: "udid")
+                user.saveEventually()
+            }
+            else {
+                println(error)
+            }
+        }
+        
         
         return true
     }
@@ -66,6 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
     }
 
     func applicationWillTerminate(application: UIApplication) {
@@ -75,6 +80,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     // MARK: - Load Instagram Images
     
+    
+   
+    /*
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: { (placemarks, error) -> Void in
             if error != nil {
@@ -104,7 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
         println("Error: " + error.localizedDescription)
     }
-    
+    */
     
 }
 
