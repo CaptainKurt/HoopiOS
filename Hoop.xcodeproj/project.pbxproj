@@ -92,7 +92,7 @@
 		908E49341AA2B47E00AD5BE7 /* 6@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "6@2x.jpg"; sourceTree = "<group>"; };
 		908E49351AA2B47E00AD5BE7 /* 7@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "7@2x.jpg"; sourceTree = "<group>"; };
 		908E49361AA2B47E00AD5BE7 /* 8@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "8@2x.jpg"; sourceTree = "<group>"; };
-		A1D54CAF1AA2CBDE0072D347 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		A1D54CAF1AA2CBDE0072D347 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Photo.swift; path = ../Photo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +132,6 @@
 		908E48C81AA29B0700AD5BE7 = {
 			isa = PBXGroup;
 			children = (
-				A1D54CAF1AA2CBDE0072D347 /* Photo.swift */,
 				908E48D31AA29B0700AD5BE7 /* Hoop */,
 				908E48F61AA29B1C00AD5BE7 /* Frameworks */,
 				908E48E91AA29B0700AD5BE7 /* HoopTests */,
@@ -152,6 +151,7 @@
 		908E48D31AA29B0700AD5BE7 /* Hoop */ = {
 			isa = PBXGroup;
 			children = (
+				A1D54CAF1AA2CBDE0072D347 /* Photo.swift */,
 				908E48DA1AA29B0700AD5BE7 /* Main.storyboard */,
 				908E48D61AA29B0700AD5BE7 /* AppDelegate.swift */,
 				908E49211AA2AE8800AD5BE7 /* ViewController.swift */,
