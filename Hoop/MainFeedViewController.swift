@@ -188,17 +188,15 @@ class MainFeedViewController: PFQueryTableViewController, CLLocationManagerDeleg
     
     func setUpNavBar()
     {
-//        var titleImage = UIImage(named: "hooplogo")
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 241, green: 85, blue: 86, alpha: 1.0)
-        
-        self.navigationController?.navigationBar.tintColor = UIColor(red: 241, green: 85, blue: 86, alpha: 1.0)
+//        self.navigationController?.navigationBar.barTintColor = UIColor(red: 241, green: 85, blue: 86, alpha: 1.0)
+//        
+//        self.navigationController?.navigationBar.tintColor = UIColor(red: 241, green: 85, blue: 86, alpha: 1.0)
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "RedBackground"), forBarMetrics: UIBarMetrics.Default)
         
         let imageView = UIImageView(frame: CGRectMake(0, 0, 70, 32))
         let image = UIImage(named: "lilhoop")
         imageView.image = image
         navigationItem.titleView = imageView
-//        self.navigationController?.navigationItem.titleView = UIImageView(image: UIImage(named: "hooplogo"))
     }
     
     func updateScoreLabel(section: Int, newScore: Int) {
@@ -210,17 +208,24 @@ class MainFeedViewController: PFQueryTableViewController, CLLocationManagerDeleg
     
     @IBAction func sortButtonPressed(sender: AnyObject)
     {
-        if sortButton.title == "trending" {
-            self.sortButton.title = "surf"
+        if sortButton.title == "TRENDING" {
+            self.sortButton.title = "SURF"
             shouldApplyFilter = true
             self.loadObjects()
         }
         else {
-            self.sortButton.title = "trending"
+            self.sortButton.title = "TRENDING"
             shouldApplyFilter = false
             self.loadObjects()
         }
     }
+    
+    
+    
+    
+    
+    
+    
     
     
     // MARK: - Get Instagram Photos
