@@ -73,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ygi-T0-R0F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="909" y="162"/>
+            <point key="canvasLocation" x="2625" y="54"/>
         </scene>
         <!--Main Feed View Controller-->
         <scene sceneID="o8f-49-OWu">
@@ -100,8 +100,7 @@
                                                     <exclude reference="DrX-sL-9Az"/>
                                                 </mask>
                                             </variation>
-                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                <rect key="frame" x="0.0" y="2" width="400" height="400"/>
+                                            <variation key="heightClass=regular-widthClass=compact">
                                                 <mask key="constraints">
                                                     <include reference="DrX-sL-9Az"/>
                                                 </mask>
@@ -127,8 +126,7 @@
                                                     <exclude reference="Y5O-aI-RDd"/>
                                                 </mask>
                                             </variation>
-                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                <rect key="frame" x="311" y="409" width="81" height="20"/>
+                                            <variation key="heightClass=regular-widthClass=compact">
                                                 <mask key="constraints">
                                                     <include reference="Gjm-bX-Etr"/>
                                                     <include reference="Y5O-aI-RDd"/>
@@ -153,8 +151,7 @@
                                                     <exclude reference="R0f-BH-p2g"/>
                                                 </mask>
                                             </variation>
-                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                <rect key="frame" x="8" y="409" width="81" height="20"/>
+                                            <variation key="heightClass=regular-widthClass=compact">
                                                 <mask key="constraints">
                                                     <include reference="DQ6-04-WE8"/>
                                                     <include reference="R0f-BH-p2g"/>
@@ -207,20 +204,20 @@
                                             <exclude reference="x4z-iq-DaF"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="9nf-Zk-R3d"/>
-                                            <exclude reference="TIT-eZ-XZN"/>
-                                            <exclude reference="tYR-Nb-vWo"/>
-                                            <exclude reference="FDd-b5-L8y"/>
-                                            <exclude reference="fi2-gt-7Ym"/>
-                                            <exclude reference="qLT-sp-7n5"/>
                                             <exclude reference="I2A-P0-GEd"/>
                                             <exclude reference="ZnA-wr-e01"/>
                                             <exclude reference="f43-6w-Kcx"/>
                                             <exclude reference="hdW-xu-Nib"/>
+                                            <exclude reference="FDd-b5-L8y"/>
+                                            <exclude reference="fi2-gt-7Ym"/>
+                                            <exclude reference="qLT-sp-7n5"/>
                                             <exclude reference="73f-3m-JPw"/>
                                             <exclude reference="NEl-KP-Tst"/>
                                             <exclude reference="Neo-lr-7NF"/>
                                             <exclude reference="qEu-Gd-wug"/>
+                                            <exclude reference="9nf-Zk-R3d"/>
+                                            <exclude reference="TIT-eZ-XZN"/>
+                                            <exclude reference="tYR-Nb-vWo"/>
                                         </mask>
                                     </variation>
                                     <variation key="heightClass=regular-widthClass=compact">
@@ -231,20 +228,20 @@
                                             <include reference="x4z-iq-DaF"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="9nf-Zk-R3d"/>
-                                            <include reference="TIT-eZ-XZN"/>
-                                            <include reference="tYR-Nb-vWo"/>
-                                            <include reference="FDd-b5-L8y"/>
-                                            <include reference="fi2-gt-7Ym"/>
-                                            <include reference="qLT-sp-7n5"/>
                                             <include reference="I2A-P0-GEd"/>
                                             <exclude reference="ZnA-wr-e01"/>
                                             <exclude reference="f43-6w-Kcx"/>
                                             <include reference="hdW-xu-Nib"/>
+                                            <include reference="FDd-b5-L8y"/>
+                                            <include reference="fi2-gt-7Ym"/>
+                                            <include reference="qLT-sp-7n5"/>
                                             <include reference="73f-3m-JPw"/>
                                             <include reference="NEl-KP-Tst"/>
                                             <include reference="Neo-lr-7NF"/>
                                             <include reference="qEu-Gd-wug"/>
+                                            <include reference="9nf-Zk-R3d"/>
+                                            <include reference="TIT-eZ-XZN"/>
+                                            <include reference="tYR-Nb-vWo"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -300,6 +297,7 @@
                             <outlet property="delegate" destination="rP9-sG-91G" id="wPw-9H-ChA"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="yxo-dP-Vp9"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uzJ-IQ-Vjj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -316,7 +314,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Gee-9C-SpV" kind="relationship" relationship="rootViewController" id="1ch-5m-kQ1"/>
+                        <segue destination="rP9-sG-91G" kind="relationship" relationship="rootViewController" id="ATN-EM-zRR"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3y1-bg-z2c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -324,4 +322,7 @@
             <point key="canvasLocation" x="-9" y="162"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="aTd-ap-pMT"/>
+    </inferredMetricsTieBreakers>
 </document>

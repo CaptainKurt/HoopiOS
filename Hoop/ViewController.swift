@@ -17,6 +17,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var stringurl : String?
     var ids : NSMutableArray = NSMutableArray()
     var pictureurls : NSMutableArray = NSMutableArray()
+    var photos : NSMutableArray = NSMutableArray()
+    var photoLocations : NSMutableArray = NSMutableArray()
+    var photoDates : NSMutableArray = NSMutableArray()
     
     
     override func viewDidLoad() {
@@ -29,30 +32,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         manager.startUpdatingLocation()
         
     }
-    
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         
         var locValue : CLLocationCoordinate2D
         locValue = manager.location.coordinate
         latitude = locValue.latitude
         longitude = locValue.longitude
-//        println(latitude)
-//        println(longitude)
         manager.stopUpdatingLocation()
         stringurl = "https://api.instagram.com/v1/locations/search?lat=\(latitude!)&lng=\(longitude!)&distance=5000&client_id=fc4a0003032345b79949e8931810577c"
-//        println(stringurl)
         getInstagramData(stringurl!)
         
     }
-    //  func connection(
     
     func getInstagramData(purl : String){
         
         var url = NSURL(string: purl)
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
-            //     println(NSString(data: data, encoding: NSUTF8StringEncoding))
-            //      println(data)
-            //      println("got here")
+            
             self.parseLocationData(data)
         }
         
@@ -80,9 +76,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
         }
-        
         getPictures(ids)
-        
     }
     
     func getPictures(idNumbers : NSMutableArray){
@@ -91,30 +85,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         var remainder = "/media/recent?client_id=fc4a0003032345b79949e8931810577c"
         var picURLString = ""
         
-        
         for object in idNumbers
         {
             var obj: String = object as String
-            // var obj: String = idNumbers[1] as String
+            
             picURLString = pictureString + obj  + remainder
-            //println(finalURL)
+            
             var picurl = NSURL(string: picURLString)
             let pictask = NSURLSession.sharedSession().dataTaskWithURL(picurl!) {(data, response, error) in
-                // println(NSString(data: data, encoding: NSUTF8StringEncoding))
-                //  println(data)
-                //  println("got here")
                 self.parseIDData(data)
-                
                 // println(picurl)
             }
             pictask.resume()
-            
-            
         }
-        println("DONE")
-        
-        
-        
     }
     
     func parseIDData(jsonData: NSData){
@@ -128,6 +111,36 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             {
                 
                 for object in picdata{
+                    var photo : Photo = Photo()
+                    
+                    if var unixDate: String = object["created_time"] as? String{
+                        //photoDates.addObject(date)
+                        
+                        var date: Int = unixDate.toInt()!
+                        
+                        var time = Double(date)
+                        
+                        var newDate = NSDate(timeIntervalSince1970: time)
+                        //var time : NSTimeInterval = NSTimeInterval(
+                        
+                        //var date = unixDate as Int
+                        photo.date = newDate
+                        // println(dateInt)
+                        //println(date)
+                        
+                    }
+                    
+                    if var location = object["location"] as? NSDictionary
+                    {
+                        if var name = location["name"] as?NSString{
+                            //photoLocations.addObject(name)
+                            photo.location = name
+                        }
+                    }
+                    
+                    if var imageID = object["id"] as? String {
+                        photo.imageID = imageID
+                    }
                     
                     if var images = object["images"] as? NSDictionary
                     {
@@ -135,26 +148,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                         {
                             if var imurl = stdres["url"] as? NSString{
                                 // println(imurl)
-                                pictureurls.addObject(imurl)
+                                //pictureurls.addObject(imurl)
+                                photo.convertURL(imurl)
                             }
                         }
                     }
                     
+                    photos.addObject(photo)
+                    println(photo)
+                    
                 }
             }
         }
-//        println(pictureurls)
-        
-//        for urlString in pictureurls {
-//            
-//        }
+        println("Done Loading Images")
     }
     
     
     
     @IBAction func seePics(sender: AnyObject)
     {
-//        navigationController.
+        //        navigationController.
     }
     
     override func didReceiveMemoryWarning() {
@@ -175,6 +188,4 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     
 }
-
-
 
