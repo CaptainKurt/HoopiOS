@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageCell: UITableViewCell
+class ImageCell: PFTableViewCell
 {
     
     @IBOutlet weak var img: PFImageView!
