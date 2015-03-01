@@ -18,12 +18,16 @@ class Photo: PFObject, PFSubclassing {
     @NSManaged var score: Int
     @NSManaged var date: NSDate
     @NSManaged var imageID: String
+    @NSManaged var respectArray: NSMutableArray
+    @NSManaged var disrespectArray: NSMutableArray
     
     
     func convertURL(urlString: String) {
         var newURL = NSURL(string: urlString)
         var dataURL = NSData(contentsOfURL: newURL!)
         imageFile = PFFile(data: dataURL)
+        
+        score = 0
     }
     
     override class func load() {

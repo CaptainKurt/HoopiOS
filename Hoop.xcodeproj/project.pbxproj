@@ -41,6 +41,23 @@
 		908E493D1AA2B47E00AD5BE7 /* 7@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 908E49351AA2B47E00AD5BE7 /* 7@2x.jpg */; };
 		908E493E1AA2B47E00AD5BE7 /* 8@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 908E49361AA2B47E00AD5BE7 /* 8@2x.jpg */; };
 		908E49401AA2DD2800AD5BE7 /* ImageFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908E493F1AA2DD2800AD5BE7 /* ImageFeed.swift */; };
+		A1C28AF01AA329A9002B051E /* DISRESPECT.svg in Resources */ = {isa = PBXBuildFile; fileRef = A1C28AED1AA329A9002B051E /* DISRESPECT.svg */; };
+		A1C28AF11AA329A9002B051E /* HOOPLOGO.svg in Resources */ = {isa = PBXBuildFile; fileRef = A1C28AEE1AA329A9002B051E /* HOOPLOGO.svg */; };
+		A1C28AF21AA329A9002B051E /* RESPECT.svg in Resources */ = {isa = PBXBuildFile; fileRef = A1C28AEF1AA329A9002B051E /* RESPECT.svg */; };
+		A1C28AF41AA32ACA002B051E /* DISRESPECT@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C28AF31AA32ACA002B051E /* DISRESPECT@2x.png */; };
+		A1C28AF61AA32C99002B051E /* RESPECT@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C28AF51AA32C99002B051E /* RESPECT@2x.png */; };
+		A1C28AF81AA3313E002B051E /* hooplogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C28AF71AA3313E002B051E /* hooplogo@2x.png */; };
+		A1C28AFD1AA3381C002B051E /* DisrespectSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C28AF91AA3381C002B051E /* DisrespectSelected@2x.png */; };
+		A1C28B001AA3381C002B051E /* RespectUnselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C28AFC1AA3381C002B051E /* RespectUnselected@2x.png */; };
+		A1C28B021AA33A27002B051E /* hoop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C28B011AA33A27002B051E /* hoop@2x.png */; };
+		A1C28B061AA33C3C002B051E /* DisrespectUnselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C28B051AA33C3C002B051E /* DisrespectUnselected@2x.png */; };
+		A1C28B071AA34940002B051E /* BIG JOHN.otf in Resources */ = {isa = PBXBuildFile; fileRef = A1C28B031AA33B00002B051E /* BIG JOHN.otf */; };
+		A1C28B081AA34940002B051E /* Slim Joe.otf in Resources */ = {isa = PBXBuildFile; fileRef = A1C28B041AA33B00002B051E /* Slim Joe.otf */; };
+		A1C28B0B1AA35580002B051E /* hoopdolla@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C28B091AA35580002B051E /* hoopdolla@2x.png */; };
+		A1C28B0C1AA35580002B051E /* RespectSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C28B0A1AA35580002B051E /* RespectSelected@2x.png */; };
+		A1C28B0E1AA35748002B051E /* lilhoop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C28B0D1AA35748002B051E /* lilhoop@2x.png */; };
+		A1C28B101AA357BC002B051E /* RedBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C28B0F1AA357BC002B051E /* RedBackground@2x.png */; };
+		A1C28B121AA35A6F002B051E /* LoadMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C28B111AA35A6F002B051E /* LoadMoreCell.swift */; };
 		A1D54CB01AA2CBDE0072D347 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D54CAF1AA2CBDE0072D347 /* Photo.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +111,23 @@
 		908E49351AA2B47E00AD5BE7 /* 7@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "7@2x.jpg"; sourceTree = "<group>"; };
 		908E49361AA2B47E00AD5BE7 /* 8@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "8@2x.jpg"; sourceTree = "<group>"; };
 		908E493F1AA2DD2800AD5BE7 /* ImageFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFeed.swift; sourceTree = "<group>"; };
+		A1C28AED1AA329A9002B051E /* DISRESPECT.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DISRESPECT.svg; sourceTree = "<group>"; };
+		A1C28AEE1AA329A9002B051E /* HOOPLOGO.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = HOOPLOGO.svg; sourceTree = "<group>"; };
+		A1C28AEF1AA329A9002B051E /* RESPECT.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RESPECT.svg; sourceTree = "<group>"; };
+		A1C28AF31AA32ACA002B051E /* DISRESPECT@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DISRESPECT@2x.png"; sourceTree = "<group>"; };
+		A1C28AF51AA32C99002B051E /* RESPECT@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RESPECT@2x.png"; sourceTree = "<group>"; };
+		A1C28AF71AA3313E002B051E /* hooplogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hooplogo@2x.png"; sourceTree = "<group>"; };
+		A1C28AF91AA3381C002B051E /* DisrespectSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DisrespectSelected@2x.png"; sourceTree = "<group>"; };
+		A1C28AFC1AA3381C002B051E /* RespectUnselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RespectUnselected@2x.png"; sourceTree = "<group>"; };
+		A1C28B011AA33A27002B051E /* hoop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hoop@2x.png"; sourceTree = "<group>"; };
+		A1C28B031AA33B00002B051E /* BIG JOHN.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BIG JOHN.otf"; sourceTree = "<group>"; };
+		A1C28B041AA33B00002B051E /* Slim Joe.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Slim Joe.otf"; sourceTree = "<group>"; };
+		A1C28B051AA33C3C002B051E /* DisrespectUnselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DisrespectUnselected@2x.png"; sourceTree = "<group>"; };
+		A1C28B091AA35580002B051E /* hoopdolla@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hoopdolla@2x.png"; sourceTree = "<group>"; };
+		A1C28B0A1AA35580002B051E /* RespectSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RespectSelected@2x.png"; sourceTree = "<group>"; };
+		A1C28B0D1AA35748002B051E /* lilhoop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lilhoop@2x.png"; sourceTree = "<group>"; };
+		A1C28B0F1AA357BC002B051E /* RedBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RedBackground@2x.png"; sourceTree = "<group>"; };
+		A1C28B111AA35A6F002B051E /* LoadMoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreCell.swift; sourceTree = "<group>"; };
 		A1D54CAF1AA2CBDE0072D347 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Photo.swift; path = ../Photo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,6 +195,7 @@
 				908E493F1AA2DD2800AD5BE7 /* ImageFeed.swift */,
 				908E491D1AA2A47600AD5BE7 /* ImageCell.swift */,
 				908E491F1AA2ACA200AD5BE7 /* HeaderCell.swift */,
+				A1C28B111AA35A6F002B051E /* LoadMoreCell.swift */,
 				908E48DD1AA29B0700AD5BE7 /* Images.xcassets */,
 				908E48DF1AA29B0700AD5BE7 /* LaunchScreen.xib */,
 				908E48D41AA29B0700AD5BE7 /* Supporting Files */,
@@ -171,14 +206,7 @@
 		908E48D41AA29B0700AD5BE7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				908E492F1AA2B47E00AD5BE7 /* 1@2x.jpg */,
-				908E49301AA2B47E00AD5BE7 /* 2@2x.jpg */,
-				908E49311AA2B47E00AD5BE7 /* 3@2x.jpg */,
-				908E49321AA2B47E00AD5BE7 /* 4@2x.jpg */,
-				908E49331AA2B47E00AD5BE7 /* 5@2x.jpg */,
-				908E49341AA2B47E00AD5BE7 /* 6@2x.jpg */,
-				908E49351AA2B47E00AD5BE7 /* 7@2x.jpg */,
-				908E49361AA2B47E00AD5BE7 /* 8@2x.jpg */,
+				A1C28B131AA360CE002B051E /* Images */,
 				908E48D51AA29B0700AD5BE7 /* Info.plist */,
 				908E48F71AA29B4100AD5BE7 /* Hoop-Bridging-Header.h */,
 			);
@@ -224,6 +252,37 @@
 			);
 			name = Frameworks;
 			path = Hoop;
+			sourceTree = "<group>";
+		};
+		A1C28B131AA360CE002B051E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A1C28B0F1AA357BC002B051E /* RedBackground@2x.png */,
+				A1C28B0D1AA35748002B051E /* lilhoop@2x.png */,
+				A1C28B091AA35580002B051E /* hoopdolla@2x.png */,
+				A1C28B0A1AA35580002B051E /* RespectSelected@2x.png */,
+				A1C28B051AA33C3C002B051E /* DisrespectUnselected@2x.png */,
+				A1C28B031AA33B00002B051E /* BIG JOHN.otf */,
+				A1C28B041AA33B00002B051E /* Slim Joe.otf */,
+				A1C28B011AA33A27002B051E /* hoop@2x.png */,
+				A1C28AF91AA3381C002B051E /* DisrespectSelected@2x.png */,
+				A1C28AFC1AA3381C002B051E /* RespectUnselected@2x.png */,
+				A1C28AF71AA3313E002B051E /* hooplogo@2x.png */,
+				A1C28AF51AA32C99002B051E /* RESPECT@2x.png */,
+				A1C28AF31AA32ACA002B051E /* DISRESPECT@2x.png */,
+				A1C28AED1AA329A9002B051E /* DISRESPECT.svg */,
+				A1C28AEE1AA329A9002B051E /* HOOPLOGO.svg */,
+				A1C28AEF1AA329A9002B051E /* RESPECT.svg */,
+				908E492F1AA2B47E00AD5BE7 /* 1@2x.jpg */,
+				908E49301AA2B47E00AD5BE7 /* 2@2x.jpg */,
+				908E49311AA2B47E00AD5BE7 /* 3@2x.jpg */,
+				908E49321AA2B47E00AD5BE7 /* 4@2x.jpg */,
+				908E49331AA2B47E00AD5BE7 /* 5@2x.jpg */,
+				908E49341AA2B47E00AD5BE7 /* 6@2x.jpg */,
+				908E49351AA2B47E00AD5BE7 /* 7@2x.jpg */,
+				908E49361AA2B47E00AD5BE7 /* 8@2x.jpg */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,10 +334,11 @@
 				TargetAttributes = {
 					908E48D01AA29B0700AD5BE7 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 76A49NYJRM;
+						DevelopmentTeam = 2B3QEPV3N3;
 					};
 					908E48E51AA29B0700AD5BE7 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 2B3QEPV3N3;
 						TestTargetID = 908E48D01AA29B0700AD5BE7;
 					};
 				};
@@ -307,17 +367,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1C28B071AA34940002B051E /* BIG JOHN.otf in Resources */,
+				A1C28B081AA34940002B051E /* Slim Joe.otf in Resources */,
+				A1C28AF41AA32ACA002B051E /* DISRESPECT@2x.png in Resources */,
+				A1C28AF81AA3313E002B051E /* hooplogo@2x.png in Resources */,
+				A1C28AF61AA32C99002B051E /* RESPECT@2x.png in Resources */,
 				908E493B1AA2B47E00AD5BE7 /* 5@2x.jpg in Resources */,
+				A1C28AF11AA329A9002B051E /* HOOPLOGO.svg in Resources */,
 				908E48DC1AA29B0700AD5BE7 /* Main.storyboard in Resources */,
+				A1C28AF21AA329A9002B051E /* RESPECT.svg in Resources */,
+				A1C28AF01AA329A9002B051E /* DISRESPECT.svg in Resources */,
 				908E49391AA2B47E00AD5BE7 /* 3@2x.jpg in Resources */,
+				A1C28B101AA357BC002B051E /* RedBackground@2x.png in Resources */,
+				A1C28B001AA3381C002B051E /* RespectUnselected@2x.png in Resources */,
+				A1C28AFD1AA3381C002B051E /* DisrespectSelected@2x.png in Resources */,
 				908E48E11AA29B0700AD5BE7 /* LaunchScreen.xib in Resources */,
+				A1C28B021AA33A27002B051E /* hoop@2x.png in Resources */,
 				908E49371AA2B47E00AD5BE7 /* 1@2x.jpg in Resources */,
 				908E493A1AA2B47E00AD5BE7 /* 4@2x.jpg in Resources */,
+				A1C28B061AA33C3C002B051E /* DisrespectUnselected@2x.png in Resources */,
 				908E493C1AA2B47E00AD5BE7 /* 6@2x.jpg in Resources */,
 				908E493E1AA2B47E00AD5BE7 /* 8@2x.jpg in Resources */,
+				A1C28B0C1AA35580002B051E /* RespectSelected@2x.png in Resources */,
 				908E48DE1AA29B0700AD5BE7 /* Images.xcassets in Resources */,
+				A1C28B0E1AA35748002B051E /* lilhoop@2x.png in Resources */,
 				908E493D1AA2B47E00AD5BE7 /* 7@2x.jpg in Resources */,
 				908E49381AA2B47E00AD5BE7 /* 2@2x.jpg in Resources */,
+				A1C28B0B1AA35580002B051E /* hoopdolla@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1C28B121AA35A6F002B051E /* LoadMoreCell.swift in Sources */,
 				908E49401AA2DD2800AD5BE7 /* ImageFeed.swift in Sources */,
 				A1D54CB01AA2CBDE0072D347 /* Photo.swift in Sources */,
 				908E49221AA2AE8800AD5BE7 /* ViewController.swift in Sources */,
@@ -466,6 +543,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Hoop",
@@ -474,6 +552,7 @@
 				INFOPLIST_FILE = Hoop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Hoop/Hoop-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -485,6 +564,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Hoop",
@@ -493,6 +573,7 @@
 				INFOPLIST_FILE = Hoop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Hoop/Hoop-Bridging-Header.h";
 			};
 			name = Release;
