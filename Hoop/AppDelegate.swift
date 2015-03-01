@@ -16,9 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        Parse.enableLocalDatastore()
+//        Parse.enableLocalDatastore()
         
-        Parse.setApplicationId("0ijou6MhtlyEo4B238PZF5B0o0Vu7O9UXuXfvsUg", clientKey: "bomEgMD9lioBtBCvneCSJLFcHFA7GzHQaF3ZTgyG")
+        Parse.setApplicationId("d5NQERKjVbCXIdTMYtgsNlPy8P6crh5XbRfxmbbL", clientKey: "th4RsOudetzjdYMI8OU9vNAxTYkVB3A1goiB9Mja")
 
         Photo.registerSubclass()
         

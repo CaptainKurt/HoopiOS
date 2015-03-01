@@ -29,6 +29,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         manager.startUpdatingLocation()
         
     }
+    
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         
         var locValue : CLLocationCoordinate2D
@@ -103,12 +104,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 //  println(data)
                 //  println("got here")
                 self.parseIDData(data)
+                
                 // println(picurl)
             }
             pictask.resume()
             
             
         }
+        println("DONE")
+        
+        
         
     }
     
@@ -139,7 +144,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
 //        println(pictureurls)
-        println("Done Loading Images")
         
 //        for urlString in pictureurls {
 //            

@@ -8,67 +8,79 @@
 
 import UIKit
 
-class MainFeedViewController: UITableViewController
+class MainFeedViewController: PFQueryTableViewController
 {
     var imgDataArray: NSMutableArray = NSMutableArray()
+    var photos: NSArray = NSArray()
     
-//    required init(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//        
-//        self.parseClassName = "Photo"
-//        self.pullToRefreshEnabled = true
-//        self.paginationEnabled = true
-//        self.objectsPerPage = 10
-//    }
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        self.parseClassName = "Photo"
+        self.pullToRefreshEnabled = true
+        self.paginationEnabled = true
+        self.objectsPerPage = 10
+    }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         
-        for imgURLString in imgDataArray {
-            let string: String = imgURLString as String
-            let data = NSData(contentsOfURL: NSURL(string: string)!)
-            var file = PFFile(data: data)
-            
-            file.saveInBackgroundWithBlock({ (succeeded, error) -> Void in
-                if error != nil {
-                    var photoObject = PFObject(className: "Photo")
-                    photoObject.addObject(string, forKey: "urlString")
-                    
-                }
-            })
-            
-            
-        }
-    }
-    
-    
-//    override func queryForTable() -> PFQuery! {
-//        
-//        
-//        var query = PFQuery(className: "Photo")
-//        
-//        if self.objects.count == 0 {
-//            query.cachePolicy = kPFCachePolicyCacheThenNetwork
+//        var files = NSMutableArray()
+//        for imgString in imgDataArray {
+//            let string = imgString as String
+//            let data = NSData(contentsOfURL: NSURL(string: string)!)
+//            let file: PFFile = PFFile(data: data)
+//            
+//            files.addObject(file)
+//            
 //        }
 //        
-//        
-//        return query
-//    }
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 428
+//        var photos = NSMutableArray()
+//        PFObject.saveAllInBackground(files, block: { (succeeded, error) -> Void in
+//            if succeeded {
+//                for file in files {
+//                    var file = file as PFFile
+//                    var photo = PFObject(className: "Photo")
+//                    photo.setObject(file, forKey: "imageFile")
+//                    photos.addObject(photo)
+//                }
+//                PFObject.saveAllInBackground(photos, block: { (succeeded, error) -> Void in
+//                    if succeeded {
+//                        println("success!")
+//                    }
+//                })
+//            }
+//        })
+        
+        
+        
+        
+        println("done")
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return imgDataArray.count
+    override func queryForTable() -> PFQuery! {
+        
+        var query = PFQuery(className: "Photo")
+        
+        if self.objects.count == 0 {
+            query.cachePolicy = kPFCachePolicyCacheThenNetwork
+        }
+        
+        
+        return query
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 400
+    }
+    
+    
+    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!, object: PFObject!) -> PFTableViewCell! {
+        
         var cell = tableView.dequeueReusableCellWithIdentifier("ImageCell", forIndexPath: indexPath) as? ImageCell
         
-        var imgURL = imgDataArray.objectAtIndex(indexPath.row) as String
-        let URL = NSURL(string: imgURL)
-        let data = NSData(contentsOfURL: URL!)
-        let file = PFFile(data: data)
+        var photo: PFObject = object as PFObject
+        var file: PFFile? = photo.objectForKey("imageFile") as? PFFile
         
         if file != nil {
             cell?.img.file = file
@@ -85,11 +97,23 @@ class MainFeedViewController: UITableViewController
             cell?.img.image = UIImage(named: "1@2x.jpg")
         }
         
-//        cell?.img.image = UIImage(data: NSData(contentsOfURL: URL!)!)
+//                cell?.img.image = UIImage(data: NSData(contentsOfURL: URL!)!)
         
         
         return cell!
+    
     }
     
+    override func objectsDidLoad(error: NSError!) {
+        super.objectsDidLoad(error)
+    }
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        if (scrollView.contentSize.height - scrollView.contentOffset.y < (self.view.bounds.size.height*2)) {
+            if (!self.loading) {
+                self.loadNextPage()
+            }
+        }
+    }
    
 }
