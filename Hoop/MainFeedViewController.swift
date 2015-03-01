@@ -28,11 +28,24 @@ class MainFeedViewController: UITableViewController
             let data = NSData(contentsOfURL: NSURL(string: string)!)
             var file = PFFile(data: data)
             
+            
             file.saveInBackgroundWithBlock({ (succeeded, error) -> Void in
                 if error != nil {
                     var photoObject = PFObject(className: "Photo")
                     photoObject.addObject(string, forKey: "urlString")
+                    photoObject.addObject(file, forKey: "imageFile")
                     
+                    photoObject.saveInBackgroundWithBlock({ (succeeded, error) -> Void in
+                        if error != nil {
+                            println("PHOTO SAVED!")
+                        }
+                        else {
+                            println(error)
+                        }
+                    })
+                }
+                else {
+                    println(error)
                 }
             })
             
@@ -70,22 +83,22 @@ class MainFeedViewController: UITableViewController
         let data = NSData(contentsOfURL: URL!)
         let file = PFFile(data: data)
         
-        if file != nil {
-            cell?.img.file = file
-            cell?.img.loadInBackground({ (succeeded, error) -> Void in
-                if error == nil {
-                    println("image loaded")
-                }
-                else {
-                    println(error)
-                }
-            })
-        }
-        else {
-            cell?.img.image = UIImage(named: "1@2x.jpg")
-        }
+//        if file != nil {
+//            cell?.img.file = file
+//            cell?.img.loadInBackground({ (succeeded, error) -> Void in
+//                if error == nil {
+//                    println("image loaded")
+//                }
+//                else {
+//                    println(error)
+//                }
+//            })
+//        }
+//        else {
+//            cell?.img.image = UIImage(named: "1@2x.jpg")
+//        }
         
-//        cell?.img.image = UIImage(data: NSData(contentsOfURL: URL!)!)
+        cell?.img.image = UIImage(data: NSData(contentsOfURL: URL!)!)
         
         
         return cell!
