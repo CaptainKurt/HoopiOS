@@ -25,11 +25,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        manager = CLLocationManager()
-        manager.delegate = self
-        manager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        manager.requestAlwaysAuthorization()
-        manager.startUpdatingLocation()
+//        manager = CLLocationManager()
+//        manager.delegate = self
+//        manager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+//        manager.requestAlwaysAuthorization()
+//        manager.startUpdatingLocation()
         
     }
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
@@ -181,7 +181,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             
             
             var mainFeedVC: MainFeedViewController = segue.destinationViewController as MainFeedViewController
-            mainFeedVC.imgDataArray = pictureurls
+//            mainFeedVC.imgDataArray = pictureurls
         }
     }
     

@@ -7,9 +7,23 @@
 //
 
 import UIKit
+import CoreLocation
+
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
+    
+    let locationManager = CLLocationManager()
+    
+//    var manager : CLLocationManager!
+//    var latitude : Double?
+//    var longitude : Double?
+//    var stringurl : String?
+//    var ids : NSMutableArray = NSMutableArray()
+//    var pictureurls : NSMutableArray = NSMutableArray()
+//    var photos : NSMutableArray = NSMutableArray()
+//    var photoLocations : NSMutableArray = NSMutableArray()
+//    var photoDates : NSMutableArray = NSMutableArray()
 
     var window: UIWindow?
 
@@ -21,6 +35,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("d5NQERKjVbCXIdTMYtgsNlPy8P6crh5XbRfxmbbL", clientKey: "th4RsOudetzjdYMI8OU9vNAxTYkVB3A1goiB9Mja")
 
         Photo.registerSubclass()
+        
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
+        
+//        manager = CLLocationManager()
+//        manager.delegate = self
+//        manager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+//        manager.requestAlwaysAuthorization()
+//        manager.startUpdatingLocation()
         
         return true
     }
@@ -48,5 +73,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    // MARK: - Load Instagram Images
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: { (placemarks, error) -> Void in
+            if error != nil {
+                println("Error: " + error.localizedDescription)
+            }
+            
+            if placemarks.count > 0 {
+                let pm = placemarks[0] as CLPlacemark
+                self.displayLocationInfo(pm)
+            }
+            else {
+                println("Error with data")
+            }
+        })
+    }
+    
+    func displayLocationInfo(placemark: CLPlacemark)
+    {
+        self.locationManager.stopUpdatingLocation()
+        
+        println(placemark.locality)
+        println(placemark.postalCode)
+        println(placemark.administrativeArea)
+        println(placemark.country)
+    }
+    
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+        println("Error: " + error.localizedDescription)
+    }
+    
+    
 }
 

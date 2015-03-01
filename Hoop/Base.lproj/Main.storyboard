@@ -73,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ygi-T0-R0F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2625" y="54"/>
+            <point key="canvasLocation" x="825" y="-150"/>
         </scene>
         <!--Main Feed View Controller-->
         <scene sceneID="o8f-49-OWu">
@@ -314,7 +314,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="rP9-sG-91G" kind="relationship" relationship="rootViewController" id="ATN-EM-zRR"/>
+                        <segue destination="Gee-9C-SpV" kind="relationship" relationship="rootViewController" id="WSO-DX-a6g"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3y1-bg-z2c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -322,7 +322,4 @@
             <point key="canvasLocation" x="-9" y="162"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="aTd-ap-pMT"/>
-    </inferredMetricsTieBreakers>
 </document>
