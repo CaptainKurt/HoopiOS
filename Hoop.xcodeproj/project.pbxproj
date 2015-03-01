@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		908E48D71AA29B0700AD5BE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908E48D61AA29B0700AD5BE7 /* AppDelegate.swift */; };
-		908E48D91AA29B0700AD5BE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908E48D81AA29B0700AD5BE7 /* ViewController.swift */; };
 		908E48DC1AA29B0700AD5BE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 908E48DA1AA29B0700AD5BE7 /* Main.storyboard */; };
 		908E48DE1AA29B0700AD5BE7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 908E48DD1AA29B0700AD5BE7 /* Images.xcassets */; };
 		908E48E11AA29B0700AD5BE7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 908E48DF1AA29B0700AD5BE7 /* LaunchScreen.xib */; };
@@ -29,6 +28,18 @@
 		908E49161AA29BD700AD5BE7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908E49151AA29BD700AD5BE7 /* SystemConfiguration.framework */; };
 		908E49181AA29BDF00AD5BE7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 908E49171AA29BDF00AD5BE7 /* libz.dylib */; };
 		908E491A1AA29BE800AD5BE7 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 908E49191AA29BE800AD5BE7 /* libsqlite3.dylib */; };
+		908E491C1AA2A03F00AD5BE7 /* MainFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908E491B1AA2A03F00AD5BE7 /* MainFeedViewController.swift */; };
+		908E491E1AA2A47600AD5BE7 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908E491D1AA2A47600AD5BE7 /* ImageCell.swift */; };
+		908E49201AA2ACA200AD5BE7 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908E491F1AA2ACA200AD5BE7 /* HeaderCell.swift */; };
+		908E49221AA2AE8800AD5BE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908E49211AA2AE8800AD5BE7 /* ViewController.swift */; };
+		908E49371AA2B47E00AD5BE7 /* 1@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 908E492F1AA2B47E00AD5BE7 /* 1@2x.jpg */; };
+		908E49381AA2B47E00AD5BE7 /* 2@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 908E49301AA2B47E00AD5BE7 /* 2@2x.jpg */; };
+		908E49391AA2B47E00AD5BE7 /* 3@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 908E49311AA2B47E00AD5BE7 /* 3@2x.jpg */; };
+		908E493A1AA2B47E00AD5BE7 /* 4@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 908E49321AA2B47E00AD5BE7 /* 4@2x.jpg */; };
+		908E493B1AA2B47E00AD5BE7 /* 5@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 908E49331AA2B47E00AD5BE7 /* 5@2x.jpg */; };
+		908E493C1AA2B47E00AD5BE7 /* 6@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 908E49341AA2B47E00AD5BE7 /* 6@2x.jpg */; };
+		908E493D1AA2B47E00AD5BE7 /* 7@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 908E49351AA2B47E00AD5BE7 /* 7@2x.jpg */; };
+		908E493E1AA2B47E00AD5BE7 /* 8@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 908E49361AA2B47E00AD5BE7 /* 8@2x.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +56,6 @@
 		908E48D11AA29B0700AD5BE7 /* Hoop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hoop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		908E48D51AA29B0700AD5BE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		908E48D61AA29B0700AD5BE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		908E48D81AA29B0700AD5BE7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		908E48DB1AA29B0700AD5BE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		908E48DD1AA29B0700AD5BE7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		908E48E01AA29B0700AD5BE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -69,6 +79,18 @@
 		908E49151AA29BD700AD5BE7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		908E49171AA29BDF00AD5BE7 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		908E49191AA29BE800AD5BE7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		908E491B1AA2A03F00AD5BE7 /* MainFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainFeedViewController.swift; sourceTree = "<group>"; };
+		908E491D1AA2A47600AD5BE7 /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		908E491F1AA2ACA200AD5BE7 /* HeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
+		908E49211AA2AE8800AD5BE7 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		908E492F1AA2B47E00AD5BE7 /* 1@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "1@2x.jpg"; sourceTree = "<group>"; };
+		908E49301AA2B47E00AD5BE7 /* 2@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "2@2x.jpg"; sourceTree = "<group>"; };
+		908E49311AA2B47E00AD5BE7 /* 3@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "3@2x.jpg"; sourceTree = "<group>"; };
+		908E49321AA2B47E00AD5BE7 /* 4@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "4@2x.jpg"; sourceTree = "<group>"; };
+		908E49331AA2B47E00AD5BE7 /* 5@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "5@2x.jpg"; sourceTree = "<group>"; };
+		908E49341AA2B47E00AD5BE7 /* 6@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "6@2x.jpg"; sourceTree = "<group>"; };
+		908E49351AA2B47E00AD5BE7 /* 7@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "7@2x.jpg"; sourceTree = "<group>"; };
+		908E49361AA2B47E00AD5BE7 /* 8@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "8@2x.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,9 +149,12 @@
 		908E48D31AA29B0700AD5BE7 /* Hoop */ = {
 			isa = PBXGroup;
 			children = (
-				908E48D61AA29B0700AD5BE7 /* AppDelegate.swift */,
-				908E48D81AA29B0700AD5BE7 /* ViewController.swift */,
 				908E48DA1AA29B0700AD5BE7 /* Main.storyboard */,
+				908E48D61AA29B0700AD5BE7 /* AppDelegate.swift */,
+				908E49211AA2AE8800AD5BE7 /* ViewController.swift */,
+				908E491B1AA2A03F00AD5BE7 /* MainFeedViewController.swift */,
+				908E491D1AA2A47600AD5BE7 /* ImageCell.swift */,
+				908E491F1AA2ACA200AD5BE7 /* HeaderCell.swift */,
 				908E48DD1AA29B0700AD5BE7 /* Images.xcassets */,
 				908E48DF1AA29B0700AD5BE7 /* LaunchScreen.xib */,
 				908E48D41AA29B0700AD5BE7 /* Supporting Files */,
@@ -140,6 +165,14 @@
 		908E48D41AA29B0700AD5BE7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				908E492F1AA2B47E00AD5BE7 /* 1@2x.jpg */,
+				908E49301AA2B47E00AD5BE7 /* 2@2x.jpg */,
+				908E49311AA2B47E00AD5BE7 /* 3@2x.jpg */,
+				908E49321AA2B47E00AD5BE7 /* 4@2x.jpg */,
+				908E49331AA2B47E00AD5BE7 /* 5@2x.jpg */,
+				908E49341AA2B47E00AD5BE7 /* 6@2x.jpg */,
+				908E49351AA2B47E00AD5BE7 /* 7@2x.jpg */,
+				908E49361AA2B47E00AD5BE7 /* 8@2x.jpg */,
 				908E48D51AA29B0700AD5BE7 /* Info.plist */,
 				908E48F71AA29B4100AD5BE7 /* Hoop-Bridging-Header.h */,
 			);
@@ -236,6 +269,7 @@
 				TargetAttributes = {
 					908E48D01AA29B0700AD5BE7 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 76A49NYJRM;
 					};
 					908E48E51AA29B0700AD5BE7 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -267,9 +301,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				908E493B1AA2B47E00AD5BE7 /* 5@2x.jpg in Resources */,
 				908E48DC1AA29B0700AD5BE7 /* Main.storyboard in Resources */,
+				908E49391AA2B47E00AD5BE7 /* 3@2x.jpg in Resources */,
 				908E48E11AA29B0700AD5BE7 /* LaunchScreen.xib in Resources */,
+				908E49371AA2B47E00AD5BE7 /* 1@2x.jpg in Resources */,
+				908E493A1AA2B47E00AD5BE7 /* 4@2x.jpg in Resources */,
+				908E493C1AA2B47E00AD5BE7 /* 6@2x.jpg in Resources */,
+				908E493E1AA2B47E00AD5BE7 /* 8@2x.jpg in Resources */,
 				908E48DE1AA29B0700AD5BE7 /* Images.xcassets in Resources */,
+				908E493D1AA2B47E00AD5BE7 /* 7@2x.jpg in Resources */,
+				908E49381AA2B47E00AD5BE7 /* 2@2x.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,7 +329,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				908E48D91AA29B0700AD5BE7 /* ViewController.swift in Sources */,
+				908E49221AA2AE8800AD5BE7 /* ViewController.swift in Sources */,
+				908E49201AA2ACA200AD5BE7 /* HeaderCell.swift in Sources */,
+				908E491E1AA2A47600AD5BE7 /* ImageCell.swift in Sources */,
+				908E491C1AA2A03F00AD5BE7 /* MainFeedViewController.swift in Sources */,
 				908E48D71AA29B0700AD5BE7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +457,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Hoop",
@@ -429,6 +475,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Hoop",
@@ -493,6 +540,7 @@
 				908E48F21AA29B0700AD5BE7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		908E48F31AA29B0700AD5BE7 /* Build configuration list for PBXNativeTarget "HoopTests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +549,7 @@
 				908E48F51AA29B0700AD5BE7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,25 +1,139 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rP9-sG-91G">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
+        <scene sceneID="OMV-C5-mFK">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Gee-9C-SpV" customClass="ViewController" customModule="Hoop" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                        <viewControllerLayoutGuide type="top" id="9IZ-xW-TOZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="8st-dJ-51T"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <view key="view" contentMode="scaleToFill" id="qJP-pg-Fyu">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.08235294118" green="0.62745098040000002" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ygi-T0-R0F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-9" y="162"/>
+        </scene>
+        <!--Main Feed View Controller-->
+        <scene sceneID="o8f-49-OWu">
+            <objects>
+                <tableViewController id="rP9-sG-91G" customClass="MainFeedViewController" customModule="Hoop" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="429" sectionHeaderHeight="22" sectionFooterHeight="22" id="Vy1-xH-c9P">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageCell" rowHeight="429" id="OKY-na-rDW" customClass="ImageCell" customModule="Hoop" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OKY-na-rDW" id="cFn-UG-igh">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fIa-R9-hDW" customClass="PFImageView">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="fIa-R9-hDW" secondAttribute="height" multiplier="1:1" id="DrX-sL-9Az"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="DrX-sL-9Az"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="DrX-sL-9Az"/>
+                                                </mask>
+                                            </variation>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="fIa-R9-hDW" secondAttribute="trailing" id="9nf-Zk-R3d"/>
+                                        <constraint firstItem="fIa-R9-hDW" firstAttribute="leading" secondItem="cFn-UG-igh" secondAttribute="leading" id="TIT-eZ-XZN"/>
+                                        <constraint firstItem="fIa-R9-hDW" firstAttribute="top" secondItem="cFn-UG-igh" secondAttribute="top" id="tYR-Nb-vWo"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="fIa-R9-hDW"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="9nf-Zk-R3d"/>
+                                            <exclude reference="TIT-eZ-XZN"/>
+                                            <exclude reference="tYR-Nb-vWo"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="heightClass=regular-widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="fIa-R9-hDW"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="9nf-Zk-R3d"/>
+                                            <include reference="TIT-eZ-XZN"/>
+                                            <include reference="tYR-Nb-vWo"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="img" destination="fIa-R9-hDW" id="Q4Q-Q9-y6f"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderCell" rowHeight="30" id="dQo-vs-JZ4" customClass="HeaderCell" customModule="Hoop" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dQo-vs-JZ4" id="9kG-gp-IeL">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4x-sy-Bxa">
+                                            <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="H4x-sy-Bxa" firstAttribute="leading" secondItem="9kG-gp-IeL" secondAttribute="leading" constant="8" id="W1r-8W-6vF"/>
+                                        <constraint firstAttribute="trailing" secondItem="H4x-sy-Bxa" secondAttribute="trailing" constant="8" id="eir-Xr-avb"/>
+                                        <constraint firstAttribute="centerY" secondItem="H4x-sy-Bxa" secondAttribute="centerY" id="rnO-mT-uMT"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="H4x-sy-Bxa"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="W1r-8W-6vF"/>
+                                            <exclude reference="eir-Xr-avb"/>
+                                            <exclude reference="rnO-mT-uMT"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="heightClass=regular-widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="H4x-sy-Bxa"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="W1r-8W-6vF"/>
+                                            <include reference="eir-Xr-avb"/>
+                                            <include reference="rnO-mT-uMT"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="timeStamp" destination="H4x-sy-Bxa" id="77n-11-KlY"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="rP9-sG-91G" id="Uw0-1M-7UB"/>
+                            <outlet property="delegate" destination="rP9-sG-91G" id="wPw-9H-ChA"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uzJ-IQ-Vjj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="676.5" y="169.5"/>
         </scene>
     </scenes>
 </document>
