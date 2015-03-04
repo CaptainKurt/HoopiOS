@@ -12,18 +12,6 @@ import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
-    
-//    let locationManager = CLLocationManager()
-    
-//    var manager : CLLocationManager!
-//    var latitude : Double?
-//    var longitude : Double?
-//    var stringurl : String?
-//    var ids : NSMutableArray = NSMutableArray()
-//    var pictureurls : NSMutableArray = NSMutableArray()
-//    var instaPhotos : NSMutableArray = NSMutableArray()
-//    var photoLocations : NSMutableArray = NSMutableArray()
-//    var photoDates : NSMutableArray = NSMutableArray()
 
     var window: UIWindow?
 
@@ -32,24 +20,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
 //        Parse.enableLocalDatastore()
         
-//        UINavigationBar.appearance().barTintColor = UIColor(red: 241, green: 85, blue: 86, alpha: 1.0)
-        
         Parse.setApplicationId("d5NQERKjVbCXIdTMYtgsNlPy8P6crh5XbRfxmbbL", clientKey: "th4RsOudetzjdYMI8OU9vNAxTYkVB3A1goiB9Mja")
 
         Photo.registerSubclass()
         
-        
-        PFAnonymousUtils.logInWithBlock { (user, error) -> Void in
-            if error == nil {
-                var udid = UIDevice.currentDevice().identifierForVendor
-                user.setObject(udid, forKey: "udid")
-                user.saveEventually()
-            }
-            else {
-                println(error)
+        if PFUser.currentUser() == nil {
+            PFAnonymousUtils.logInWithBlock { (user, error) -> Void in
+                if error == nil {
+                    var udid = UIDevice.currentDevice().identifierForVendor
+                    user.setObject(udid, forKey: "udid")
+                    user.saveEventually()
+                }
+                else {
+                    println(error)
+                }
             }
         }
-        
         
         return true
     }
@@ -78,41 +64,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
 
 
-    // MARK: - Load Instagram Images
-    
-    
-   
-    /*
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: { (placemarks, error) -> Void in
-            if error != nil {
-                println("Error: " + error.localizedDescription)
-            }
-            
-            if placemarks.count > 0 {
-                let pm = placemarks[0] as CLPlacemark
-                self.displayLocationInfo(pm)
-            }
-            else {
-                println("Error with data")
-            }
-        })
-    }
-    
-    func displayLocationInfo(placemark: CLPlacemark)
-    {
-        self.locationManager.stopUpdatingLocation()
-        
-        println(placemark.locality)
-        println(placemark.postalCode)
-        println(placemark.administrativeArea)
-        println(placemark.country)
-    }
-    
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println("Error: " + error.localizedDescription)
-    }
-    */
     
 }
 
