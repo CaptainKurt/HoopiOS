@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xqD-nw-XPb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6724" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xqD-nw-XPb">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -170,7 +170,7 @@
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
                                                 <mask key="constraints">
-                                                    <include reference="7Cm-4w-ePw"/>
+                                                    <exclude reference="7Cm-4w-ePw"/>
                                                     <exclude reference="DQ6-04-WE8"/>
                                                     <exclude reference="R0f-BH-p2g"/>
                                                 </mask>
@@ -364,7 +364,8 @@
                                                             <exclude reference="jR0-iP-0BC"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="8" y="9" width="93" height="30"/>
                                                         <mask key="constraints">
                                                             <exclude reference="JPn-3t-ciD"/>
                                                             <include reference="jR0-iP-0BC"/>
@@ -516,7 +517,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="yxo-dP-Vp9">
-                        <barButtonItem key="rightBarButtonItem" title="Trending" id="Sz9-dW-flN">
+                        <barButtonItem key="rightBarButtonItem" title="TRENDING" id="Sz9-dW-flN">
                             <color key="tintColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="sortButtonPressed:" destination="rP9-sG-91G" id="lUP-cx-AoI"/>

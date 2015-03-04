@@ -9,9 +9,9 @@ import UIKit
 
 class MainFeedViewController: PFQueryTableViewController, CLLocationManagerDelegate, ImageCellDelegate
 {
-    
+    var firstLocation: CLLocation?
     var photos : NSMutableArray = NSMutableArray()
-    
+    var reusableSectionHeaderViews: NSMutableSet = NSMutableSet()
     
     var manager : CLLocationManager!
     var latitude : Double?
@@ -45,7 +45,7 @@ class MainFeedViewController: PFQueryTableViewController, CLLocationManagerDeleg
         manager = CLLocationManager()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
-        manager.requestAlwaysAuthorization()
+        manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
     }
     
@@ -81,9 +81,12 @@ class MainFeedViewController: PFQueryTableViewController, CLLocationManagerDeleg
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UIScreen.mainScreen().bounds.width + 41
+    }
     
     override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UIScreen.mainScreen().bounds.height + 41
+        return UIScreen.mainScreen().bounds.width + 41
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -108,13 +111,29 @@ class MainFeedViewController: PFQueryTableViewController, CLLocationManagerDeleg
             return nil
         }
         
-        var header: HeaderCell = tableView.dequeueReusableCellWithIdentifier("HeaderCell") as HeaderCell
+        var header: HeaderCell? = self.dequeueReusableSectionHeaderView()
+        
+        if header == nil {
+            header = tableView.dequeueReusableCellWithIdentifier("HeaderCell") as? HeaderCell
+            self.reusableSectionHeaderViews.addObject(header!)
+        }
         
         var photo: Photo = self.objects[section] as Photo
-        header.scoreLabel.text = "\(photo.score)"
-        header.locationLabel.text = "\(photo.location)"
+        header?.scoreLabel.text = "\(photo.score)"
+        header?.locationLabel.text = "\(photo.location)"
         
         return header
+    }
+    
+    func dequeueReusableSectionHeaderView() -> HeaderCell? {
+        for sectionHeaderView in self.reusableSectionHeaderViews
+        {
+            if sectionHeaderView.superview == nil {
+                return sectionHeaderView as? HeaderCell
+            }
+        }
+        
+        return nil
     }
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!, object: PFObject!) -> PFTableViewCell! {
@@ -124,7 +143,11 @@ class MainFeedViewController: PFQueryTableViewController, CLLocationManagerDeleg
             return cell
         } else {
             
-            var cell = tableView.dequeueReusableCellWithIdentifier("ImageCell") as? ImageCell
+            var cell = tableView.dequeueReusableCellWithIdentifier("ImageCell", forIndexPath: indexPath) as? ImageCell
+            
+            if cell == nil {
+                println("new cell")
+            }
             
             var photo: Photo = object as Photo
             cell?.photo = photo
@@ -132,14 +155,7 @@ class MainFeedViewController: PFQueryTableViewController, CLLocationManagerDeleg
             
             if file != nil {
                 cell?.img.file = file
-                cell?.img.loadInBackground({ (succeeded, error) -> Void in
-                    if error == nil {
-                        println("image loaded")
-                    }
-                    else {
-                        println(error)
-                    }
-                })
+                cell?.img.loadInBackground()
             }
             else {
                 cell?.img.image = UIImage(named: "1@2x.jpg")
@@ -233,12 +249,24 @@ class MainFeedViewController: PFQueryTableViewController, CLLocationManagerDeleg
     
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        var newLocation: CLLocation = locations.last as CLLocation
+        if (self.firstLocation != nil) {
+            // app already has a location
+            var locationAge =  newLocation.timestamp.timeIntervalSinceDate(firstLocation!.timestamp)
+            println("locationAge: \(locationAge)")
+            if (locationAge < 120.0) {  // 120 is in seconds or milliseconds?
+                return
+            }
+        } else {
+            self.firstLocation = newLocation;
+        }
         
+        manager.stopUpdatingLocation()
         var locValue : CLLocationCoordinate2D
         locValue = manager.location.coordinate
         latitude = locValue.latitude
         longitude = locValue.longitude
-        manager.stopUpdatingLocation()
+//        manager.stopUpdatingLocation()
         stringurl = "https://api.instagram.com/v1/locations/search?lat=\(latitude!)&lng=\(longitude!)&distance=5000&client_id=fc4a0003032345b79949e8931810577c"
         getInstagramData(stringurl!)
         
@@ -247,6 +275,7 @@ class MainFeedViewController: PFQueryTableViewController, CLLocationManagerDeleg
     func getInstagramData(purl : String){
         
         var url = NSURL(string: purl)
+        
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
             
             self.parseLocationData(data)
@@ -267,6 +296,9 @@ class MainFeedViewController: PFQueryTableViewController, CLLocationManagerDeleg
         {
             if let data = insta["data"] as? NSArray
             {
+//                println("------------------------")
+//                println("DATA: \(data)")
+//                println("------------------------")
                 for object in data
                 {
                     if var uid = object["id"] as? NSString
@@ -281,20 +313,30 @@ class MainFeedViewController: PFQueryTableViewController, CLLocationManagerDeleg
     
     func getPictures(idNumbers : NSMutableArray){
         
+        var query = PFQuery(className: "Photo")
+        var lastPhoto: Photo? = query.getFirstObject() as? Photo
+        var lastDateUNIX: NSTimeInterval?
+        if lastPhoto != nil {
+            var lastDate: NSDate = lastPhoto!.date
+            lastDateUNIX = lastDate.timeIntervalSince1970
+        }
+        
         var pictureString = "https://api.instagram.com/v1/locations/"
         var remainder = "/media/recent?client_id=fc4a0003032345b79949e8931810577c"
-        var picURLString = ""
+        if lastDateUNIX != nil {
+            remainder = "\(lastDateUNIX)/media/recent?client_id=fc4a0003032345b79949e8931810577c"
+        }
         
         for object in idNumbers
         {
             var obj: String = object as String
             
-            picURLString = pictureString + obj  + remainder
+            var picURLString = pictureString + obj  + remainder
             
             var picurl = NSURL(string: picURLString)
             let pictask = NSURLSession.sharedSession().dataTaskWithURL(picurl!) {(data, response, error) in
                 self.parseIDData(data)
-                // println(picurl)
+//                 println(data)
             }
             pictask.resume()
         }
@@ -302,13 +344,16 @@ class MainFeedViewController: PFQueryTableViewController, CLLocationManagerDeleg
     
     func parseIDData(jsonData: NSData){
         
+        
+        
+        var newPhotos: NSMutableArray = NSMutableArray()
         var queries: NSMutableArray = NSMutableArray()
         var parseError: NSError?
         let parsedObject: AnyObject? = NSJSONSerialization.JSONObjectWithData(jsonData,
             options: NSJSONReadingOptions.AllowFragments,
             error:&parseError)
-        var queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-        dispatch_async(queue, { () -> Void in
+//        var queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+//        dispatch_async(queue, { () -> Void in
             if let instapics = parsedObject as? NSDictionary
             {
                 if let picdata = instapics["data"] as? NSArray
@@ -357,7 +402,7 @@ class MainFeedViewController: PFQueryTableViewController, CLLocationManagerDeleg
                                 }
                             }
                         }
-                        
+                        newPhotos.addObject(photo)
                         
                         var query: PFQuery = PFQuery(className: "Photo")
                         query.whereKey("imageID", equalTo: photo.imageID)
@@ -376,16 +421,25 @@ class MainFeedViewController: PFQueryTableViewController, CLLocationManagerDeleg
                 }
                 
             }
-            
-            PFObject.saveAllInBackground(self.instaPhotos, block: { (succeeded, error) -> Void in
-                if succeeded {
-                    println("SUCCESS!")
-                }
-                else {
-                    println(error)
-                }
-            })
+        
+        PFObject.saveAllInBackground(newPhotos, block: { (succeeded, error) -> Void in
+            if succeeded {
+                println("SUCCESS!")
+            }
+            else {
+                println(error)
+            }
         })
+        
+//            PFObject.saveAllInBackground(self.instaPhotos, block: { (succeeded, error) -> Void in
+//                if succeeded {
+//                    println("SUCCESS!")
+//                }
+//                else {
+//                    println(error)
+//                }
+//            })
+////        })
         println("Done Loading Images")
         
         

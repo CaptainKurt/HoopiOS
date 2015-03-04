@@ -56,12 +56,21 @@ class ImageCell: PFTableViewCell
     
     func setButton()
     {
+        println("CURRENTUSER: \(PFUser.currentUser())")
 //        respectArray = photo?.objectForKey("respectArray") as NSMutableArray
 //        disrespectArray = photo?.objectForKey("disrespectArray") as NSMutableArray
 //        if photo?.respectArray
+        if photo?.respectArray == nil {
+            respectButton.selected = false
+        }
+        if photo?.disrespectArray == nil {
+            disrespectButton.selected = false
+        }
+        
         for userRespected in photo!.respectArray {
-            var user = userRespected as PFUser
-            if user == PFUser.currentUser()
+            var user = userRespected as? PFUser
+            println("CURRENTUSER: \(PFUser.currentUser())")
+            if user?.objectId == PFUser.currentUser().objectId
             {
                 respectButton.selected = true
                 break
@@ -70,8 +79,8 @@ class ImageCell: PFTableViewCell
             }
         }
         for userDisrespected in photo!.disrespectArray {
-            var user = userDisrespected as PFUser
-            if user == PFUser.currentUser()
+            var user = userDisrespected as? PFUser
+            if user?.objectId == PFUser.currentUser().objectId
             {
                 disrespectButton.selected = true
                 break
