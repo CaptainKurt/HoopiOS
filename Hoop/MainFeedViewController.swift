@@ -358,7 +358,7 @@ class MainFeedViewController: PFQueryTableViewController, CLLocationManagerDeleg
             {
                 if let picdata = instapics["data"] as? NSArray
                 {
-                    
+                    println(picdata)
                     for object in picdata{
                         var photo : Photo = Photo()
                         
